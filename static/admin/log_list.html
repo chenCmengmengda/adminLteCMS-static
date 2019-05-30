@@ -1,0 +1,170 @@
+<link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../plugins/adminLTE/css/AdminLTE.css">
+<link rel="stylesheet" href="../plugins/adminLTE/css/skins/_all-skins.min.css">
+<link rel="stylesheet" href="../css/style.css">
+<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../plugins/angularjs/angular.min.js"></script>
+<!-- 日历组件 -->
+<link rel="stylesheet" href="../plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css">
+<script src="../plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="../plugins/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+<!-- 分页组件 -->
+<script src="../plugins/angularjs/pagination.js"></script>
+<link rel="stylesheet" href="../plugins/angularjs/pagination.css" >
+<!-- 分页组件结束  -->
+<script src="../js/common.js"></script>
+<script src="../js/base_pagination.js"></script>
+<script src="../js/service/logService.js"></script>
+<script src="../js/controller/logController.js"></script>
+
+<body class="hold-transition skin-red sidebar-mini" ng-app="logApp" ng-controller="logController" >
+<!-- .box-body -->
+<div class="box-header with-border">
+    <h3 class="box-title">系统日志列表</h3>
+</div>
+
+<div class="box-body">
+
+    <!-- 数据表格 -->
+    <div class="table-box">
+
+        <!--工具栏-->
+
+        <!--工具栏/-->
+
+        <!--数据列表-->
+        <table id="dataList" style="width:100%;" class="table table-bordered table-striped table-hover dataTable">
+            <thead>
+            <tr>
+                <th class="" style="padding-right:0px">
+                    <input id="selall" type="checkbox" class="icheckbox_square-blue">
+                </th>
+                <th class="sorting_asc hidden-xs">ID</th>
+                <th class="sorting">访问时间</th>
+                <th class="sorting">访问用户</th>
+                <th class="sorting hidden-xs">访问IP</th>
+                <th class="sorting">资源URL</th>
+                <th class="sorting hidden-xs">执行时间</th>
+                <th class="sorting hidden-xs">访问方法</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- ngRepeat: entity in list --><tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding">155555347823772</td>
+                <td class="ng-binding">2019-04-18 10:11:18</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">secretC</td>
+                <td class="hidden-xs ng-binding">0:0:0:0:0:0:0:1</td>
+                <td class="ng-binding">/user/list.do</td>
+                <td class="hidden-xs ng-binding">41</td>
+                <td class="hidden-xs ng-binding">[类名] com.blog.controller.UserController[方法名] getUserList</td>
+
+            </tr><!-- end ngRepeat: entity in list --><tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding">155555347829051</td>
+                <td class="ng-binding">2019-04-18 10:11:18</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">secretC</td>
+                <td class="hidden-xs ng-binding">0:0:0:0:0:0:0:1</td>
+                <td class="ng-binding">/user/list.do</td>
+                <td class="hidden-xs ng-binding">5</td>
+                <td class="hidden-xs ng-binding">[类名] com.blog.controller.UserController[方法名] getUserList</td>
+
+            </tr><!-- end ngRepeat: entity in list --><tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding">155555371451846</td>
+                <td class="ng-binding">2019-04-18 10:15:15</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">secretC</td>
+                <td class="hidden-xs ng-binding">0:0:0:0:0:0:0:1</td>
+                <td class="ng-binding">/user/list.do</td>
+                <td class="hidden-xs ng-binding">17</td>
+                <td class="hidden-xs ng-binding">[类名] com.blog.controller.UserController[方法名] getUserList</td>
+
+            </tr><!-- end ngRepeat: entity in list --><tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding">155555371464138</td>
+                <td class="ng-binding">2019-04-18 10:15:15</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">secretC</td>
+                <td class="hidden-xs ng-binding">0:0:0:0:0:0:0:1</td>
+                <td class="ng-binding">/user/list.do</td>
+                <td class="hidden-xs ng-binding">7</td>
+                <td class="hidden-xs ng-binding">[类名] com.blog.controller.UserController[方法名] getUserList</td>
+
+            </tr><!-- end ngRepeat: entity in list --><tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding">155555377690602</td>
+                <td class="ng-binding">2019-04-18 10:16:17</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">secretC</td>
+                <td class="hidden-xs ng-binding">0:0:0:0:0:0:0:1</td>
+                <td class="ng-binding">/blog/list.do</td>
+                <td class="hidden-xs ng-binding">30</td>
+                <td class="hidden-xs ng-binding">[类名] com.blog.controller.BlogController[方法名] getBlogList</td>
+
+            </tr><!-- end ngRepeat: entity in list --><tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding">155555377703280</td>
+                <td class="ng-binding">2019-04-18 10:16:17</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">secretC</td>
+                <td class="hidden-xs ng-binding">0:0:0:0:0:0:0:1</td>
+                <td class="ng-binding">/blog/list.do</td>
+                <td class="hidden-xs ng-binding">6</td>
+                <td class="hidden-xs ng-binding">[类名] com.blog.controller.BlogController[方法名] getBlogList</td>
+
+            </tr><!-- end ngRepeat: entity in list --><tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding">155555393407443</td>
+                <td class="ng-binding">2019-04-18 10:18:54</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">secretC</td>
+                <td class="hidden-xs ng-binding">0:0:0:0:0:0:0:1</td>
+                <td class="ng-binding">/user/list.do</td>
+                <td class="hidden-xs ng-binding">4</td>
+                <td class="hidden-xs ng-binding">[类名] com.blog.controller.UserController[方法名] getUserList</td>
+
+            </tr><!-- end ngRepeat: entity in list --><tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding">155555393423159</td>
+                <td class="ng-binding">2019-04-18 10:18:54</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">secretC</td>
+                <td class="hidden-xs ng-binding">0:0:0:0:0:0:0:1</td>
+                <td class="ng-binding">/user/list.do</td>
+                <td class="hidden-xs ng-binding">6</td>
+                <td class="hidden-xs ng-binding">[类名] com.blog.controller.UserController[方法名] getUserList</td>
+
+            </tr><!-- end ngRepeat: entity in list --><tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding">155555393735129</td>
+                <td class="ng-binding">2019-04-18 10:18:57</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">secretC</td>
+                <td class="hidden-xs ng-binding">0:0:0:0:0:0:0:1</td>
+                <td class="ng-binding">/user/findOne.do</td>
+                <td class="hidden-xs ng-binding">5</td>
+                <td class="hidden-xs ng-binding">[类名] com.blog.controller.UserController[方法名] findOne</td>
+
+            </tr><!-- end ngRepeat: entity in list --><tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding">155555437688382</td>
+                <td class="ng-binding">2019-04-18 10:26:17</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">secretC</td>
+                <td class="hidden-xs ng-binding">0:0:0:0:0:0:0:1</td>
+                <td class="ng-binding">/blog/list.do</td>
+                <td class="hidden-xs ng-binding">80</td>
+                <td class="hidden-xs ng-binding">[类名] com.blog.controller.BlogController[方法名] getBlogList</td>
+
+            </tr><!-- end ngRepeat: entity in list -->
+
+            </tbody>
+        </table>
+        <!--数据列表/-->
+        <!-- 分页 -->
+        <tm-pagination conf="paginationConf"></tm-pagination>
+
+
+    </div>
+    <!-- 数据表格 /-->
+
+
+
+
+</div>

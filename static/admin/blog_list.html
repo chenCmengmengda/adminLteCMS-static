@@ -1,0 +1,298 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../plugins/adminLTE/css/AdminLTE.css">
+<link rel="stylesheet" href="../plugins/adminLTE/css/skins/_all-skins.min.css">
+<link rel="stylesheet" href="../css/style.css">
+<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../plugins/angularjs/angular.min.js"></script>
+<!-- 分页组件 -->
+<script src="../plugins/angularjs/pagination.js"></script>
+<link rel="stylesheet" href="../plugins/angularjs/pagination.css" >
+
+<!-- kindeditor插件 -->
+<link href="/js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" charset="utf-8" src="../js/kindeditor-4.1.10/kindeditor-all-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/kindeditor-4.1.10/lang/zh_CN.js"></script>
+<script src="../js/common.js"></script>
+<!-- datatables样式-->
+<link rel="stylesheet" type="text/css" href="../plugins/datatables/dataTables.bootstrap.css"/>
+<!-- end -->
+<script src="../js/base_pagination.js"></script>
+<script src="../js/service/blogService.js"></script>
+<script src="../js/controller/blogController.js"></script>
+<script>
+    var blogEditEditor ;
+    //页面初始化完毕后执行此方法
+    $(function(){
+        //创建富文本编辑器
+        blogEditEditor = Blog.createEditor("#editModal [name=desc]");
+        //初始化类目选择和图片上传器
+        Blog.init({fun:function(node){
+
+            }});
+    });
+
+</script>
+<body class="hold-transition skin-red sidebar-mini" ng-app="blog" ng-controller="blogController" >
+<!-- .box-body -->
+<div class="box-header with-border">
+    <h3 class="box-title">博客列表</h3>
+</div>
+
+<div class="box-body">
+
+
+    <!-- 数据表格 -->
+    <div class="table-box">
+
+        <!--工具栏-->
+        <div class="pull-left">
+            <div class="form-group form-inline">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default" title="新建" onclick="window.location.href='blog_write.html'"><i class="fa fa-file-o"></i> 新建</button>
+                    <button type="button" class="btn btn-default" title="删除" data-toggle="modal" data-target="#delModal"><i class="fa fa-trash-o"></i> 删除</button>
+                    <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
+                </div>
+            </div>
+        </div>
+        <div class="box-tools pull-right">
+            <div class="has-feedback">
+
+            </div>
+        </div>
+        <!--工具栏/-->
+
+        <!--数据列表-->
+
+
+
+        <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
+            <thead>
+            <tr>
+                <th class="" style="padding-right:0px">
+                    <input id="selall" type="checkbox" class="icheckbox_square-blue">
+                </th>
+                <th class="sorting_asc hidden-xs">博客ID</th>
+                <th class="sorting">博客标题</th>
+                <th class="sorting hidden-xs">摘要</th>
+                <th class="sorting hidden-xs">封面图片</th>
+                <th class="sorting hidden-xs">创建时间</th>
+                <th class="sorting hidden-xs">更新时间</th>
+                <th class="text-center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- ngRepeat: entity in list -->
+            <tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">153363239281984</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">写博客测试</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">摘要：这是博客正文！！！</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap"></td>
+                <td class="hidden-xs ng-binding">2018-08-07 05:03:36</td>
+                <td class="hidden-xs ng-binding">2018-08-13 05:02:39</td>
+                <td class="text-center">
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)">修改</button>
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#descModal" ng-click="findOne(entity.id)">详情</button>
+                </td>
+            </tr><!-- end ngRepeat: entity in list --><tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">153363261644321</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">写博客测试2</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">摘要：&lt;strong&gt;这是博客正文！！！&lt;sp</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap"></td>
+                <td class="hidden-xs ng-binding">2018-08-07 05:03:36</td>
+                <td class="hidden-xs ng-binding">2018-08-07 05:03:36</td>
+                <td class="text-center">
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)">修改</button>
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#descModal" ng-click="findOne(entity.id)">详情</button>
+                </td>
+            </tr><!-- end ngRepeat: entity in list --><tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">153363300928176</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">写博客测试3</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">摘要：</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap"></td>
+                <td class="hidden-xs ng-binding">2018-08-07 05:10:09</td>
+                <td class="hidden-xs ng-binding">2018-08-07 05:10:09</td>
+                <td class="text-center">
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)">修改</button>
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#descModal" ng-click="findOne(entity.id)">详情</button>
+                </td>
+            </tr><!-- end ngRepeat: entity in list --><tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">155514445533748</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">写博客测试X</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">摘要：123123123</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap"></td>
+                <td class="hidden-xs ng-binding">2019-05-09 02:21:01</td>
+                <td class="hidden-xs ng-binding">2019-04-13 05:11:39</td>
+                <td class="text-center">
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)">修改</button>
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#descModal" ng-click="findOne(entity.id)">详情</button>
+                </td>
+            </tr><!-- end ngRepeat: entity in list --><tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">155523443512629</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">github地址</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">摘要：github</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap"></td>
+                <td class="hidden-xs ng-binding">2019-04-14 05:33:55</td>
+                <td class="hidden-xs ng-binding">2019-04-14 06:00:10</td>
+                <td class="text-center">
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)">修改</button>
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#descModal" ng-click="findOne(entity.id)">详情</button>
+                </td>
+            </tr><!-- end ngRepeat: entity in list --><tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">155652618974609</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">“算法历练之路”第二期：取球游戏</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">摘要：“算法历练之路”第二期：取球游戏</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">http://192.168.204.129/www/images/2019/04/29/1556526176697297.jpg</td>
+                <td class="hidden-xs ng-binding">2019-04-29 04:23:10</td>
+                <td class="hidden-xs ng-binding">2019-04-29 04:23:10</td>
+                <td class="text-center">
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)">修改</button>
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#descModal" ng-click="findOne(entity.id)">详情</button>
+                </td>
+            </tr><!-- end ngRepeat: entity in list --><tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">155771405318888</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">谜题《啥是推理》</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">摘要：第四题《啥是推理》“松先生，推理是什么啊</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap"></td>
+                <td class="hidden-xs ng-binding">2019-05-13 10:20:53</td>
+                <td class="hidden-xs ng-binding">2019-05-13 10:20:53</td>
+                <td class="text-center">
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)">修改</button>
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#descModal" ng-click="findOne(entity.id)">详情</button>
+                </td>
+            </tr><!-- end ngRepeat: entity in list --><tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">155852785729908</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">算法历练之路——传纸条（JAVA）</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">摘要：这个文章本来是发表在博客园的，但是作者目</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap"></td>
+                <td class="hidden-xs ng-binding">2019-05-22 08:24:17</td>
+                <td class="hidden-xs ng-binding">2019-05-22 08:24:17</td>
+                <td class="text-center">
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)">修改</button>
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#descModal" ng-click="findOne(entity.id)">详情</button>
+                </td>
+            </tr><!-- end ngRepeat: entity in list --><tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">155896063240479</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">长篇原创推理小说转载：《青行灯杀人事件》——序章</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">摘要：原地址：https://tieba.ba</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap"></td>
+                <td class="hidden-xs ng-binding">2019-05-27 08:37:12</td>
+                <td class="hidden-xs ng-binding">2019-05-27 08:37:12</td>
+                <td class="text-center">
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)">修改</button>
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#descModal" ng-click="findOne(entity.id)">详情</button>
+                </td>
+            </tr><!-- end ngRepeat: entity in list --><tr  class="ng-scope">
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">155896087375991</td>
+                <td style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap" class="ng-binding">长篇原创推理小说转载：《青行灯杀人事件》——第一章</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">摘要：原地址:https://tieba.ba</td>
+                <td class="hidden-xs ng-binding" style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap"></td>
+                <td class="hidden-xs ng-binding">2019-05-27 08:41:14</td>
+                <td class="hidden-xs ng-binding">2019-05-27 08:41:14</td>
+                <td class="text-center">
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)">修改</button>
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#descModal" ng-click="findOne(entity.id)">详情</button>
+                </td>
+            </tr><!-- end ngRepeat: entity in list -->
+
+            </tbody>
+        </table>
+        <!--数据列表/-->
+        <!-- 分页 -->
+        <tm-pagination conf="paginationConf"></tm-pagination>
+
+
+
+    </div>
+    <!-- 数据表格 /-->
+
+
+</div>
+<!-- /.box-body -->
+<!-- 编辑窗口 -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="top:auto;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">博客编辑</h3>
+            </div>
+            <div class="modal-body" >
+                <table class="table table-bordered table-striped"  width="auto">
+                    <!--<input type="hidden" name="createTime" ng-model="emtity.createTime" />-->
+                    <tr>
+                        <td>标题</td>
+                        <td><input  class="form-control" placeholder="博客标题" ng-model="entity.title" >  </td>
+                    </tr>
+                    <td>封面上传:</td>
+                    <td>
+                        <button  class="btn btn-success onePicUpload"  placeholder="相册标题" >上传图片 </button>
+                        <input type="hidden" name="imageUrl" ng-model="entity.imageUrl"/>
+                    </td>
+                    <tr>
+                        <td>内容</td>
+                        <td>
+                            <textarea style="width:auto;visibility:hidden;" ng-model="entity.blogDesc" name="desc"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="update()">保存</button>
+                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--详细-->
+<div class="modal fade" id="descModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="top:auto;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 >{{entity.title}}</h3>
+            </div>
+            <div class="modal-body" ng-bind-html="entity.blogDesc | to_trusted" >
+
+            </div>
+            <div class="modal-footer">
+
+                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="delModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="top:auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 >提示</h3>
+            </div>
+            <div class="modal-body"  >
+                你真的要删除吗？
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true" ng-click="dele()">确定</button>
+                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
